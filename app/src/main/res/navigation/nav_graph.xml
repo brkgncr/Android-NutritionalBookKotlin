@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nutritionDetailFragment"
-        android:name="com.burak.nutritionalvaluebook.NutritionDetailFragment"
+        android:name="com.burak.nutritionalvaluebook.view.NutritionDetailFragment"
         android:label="fragment_nutrition_detail"
         tools:layout="@layout/fragment_nutrition_detail" >
         <argument
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/nutritionListFragment"
-        android:name="com.burak.nutritionalvaluebook.NutritionListFragment"
+        android:name="com.burak.nutritionalvaluebook.view.NutritionListFragment"
         android:label="fragment_food_list"
         tools:layout="@layout/fragment_nutrition_list" >
         <action

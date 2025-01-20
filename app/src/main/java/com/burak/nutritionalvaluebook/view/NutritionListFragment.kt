@@ -1,4 +1,4 @@
-package com.burak.nutritionalvaluebook
+package com.burak.nutritionalvaluebook.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
