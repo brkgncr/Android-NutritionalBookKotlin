@@ -5,18 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.burak.nutritionalvaluebook.adapter.NutritionRecyclerAdapter
 import com.burak.nutritionalvaluebook.databinding.FragmentNutritionListBinding
-import com.burak.nutritionalvaluebook.service.NutritionAPI
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.burak.nutritionalvaluebook.viewmodel.NutritionListViewModel
 
 class NutritionListFragment : Fragment() {
 
     private var _binding: FragmentNutritionListBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel : NutritionListViewModel
+    private  val nutritionRecycler = NutritionRecyclerAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +34,47 @@ class NutritionListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.swipeRefreshLayout.setOnRefreshListener {
+        viewModel = ViewModelProvider(this)[NutritionListViewModel::class.java]
+        viewModel.refreshData()
 
+        binding.nutritionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.nutritionRecyclerView.adapter = nutritionRecycler
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.nutritionRecyclerView.visibility = View.GONE
+            binding.nutritionErrorMessage.visibility = View.GONE
+            binding.nutritionLoading.visibility = View.VISIBLE
+            viewModel.refreshFromInternet()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
 
+    }
+
+    private fun observeLiveData() {
+        viewModel.nutritions.observe(viewLifecycleOwner) {
+            //adapter
+            binding.nutritionRecyclerView.visibility = View.VISIBLE
+        }
+
+        viewModel.nutritionErrorMessage.observe(viewLifecycleOwner) {
+            if(it) {
+                binding.nutritionErrorMessage.visibility = View.VISIBLE
+                binding.nutritionRecyclerView.visibility = View.GONE
+            } else {
+                binding.nutritionErrorMessage.visibility = View.GONE
+            }
+        }
+
+        viewModel.nutritionLoading.observe(viewLifecycleOwner) {
+            if(it) {
+                binding.nutritionErrorMessage.visibility = View.GONE
+                binding.nutritionRecyclerView.visibility = View.GONE
+                binding.nutritionLoading.visibility = View.VISIBLE
+            } else {
+                binding.nutritionLoading.visibility = View.GONE
+            }
+        }
     }
 
     override fun onDestroyView() {

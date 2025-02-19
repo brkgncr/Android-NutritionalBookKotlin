@@ -26,11 +26,14 @@ class SpeicalSharedPreferences {
             return SpeicalSharedPreferences()
         }
 
-        fun timeSave(time : Long) {
-            sharedPreferences?.edit()?.putLong(TIME,time)?.apply()
-        }
 
-        fun timeCapture() = sharedPreferences?.getLong(TIME,0)
 
     }
+
+    fun timeSave(time : Long) {
+        sharedPreferences?.edit()?.putLong(TIME,time)?.apply()
+    }
+
+    fun timeCapture() = sharedPreferences?.getLong(TIME,0)
+
 }

@@ -9,7 +9,7 @@ import com.burak.nutritionalvaluebook.model.Nutrition
 interface NutritionDAO {
 
     @Insert
-    suspend fun insertAll(vararg nutrition: Nutrition)
+    suspend fun insertAll(vararg nutrition: Nutrition) : List<Long>
 
     @Query("SELECT * FROM nutrition")
     suspend fun getAllNutrition() : List<Nutrition>

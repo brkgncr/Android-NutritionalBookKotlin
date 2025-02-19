@@ -20,59 +20,59 @@
 
 
     <TextView
-        android:id="@+id/nutrientName"
+        android:id="@+id/nutritionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Nutrient Name"
+        android:text="nutrition Name"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nutrientImage" />
 
     <TextView
-        android:id="@+id/nutrientCalories"
+        android:id="@+id/nutritionCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Nutrient Calories"
+        android:text="nutrition Calories"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nutrientName" />
+        app:layout_constraintTop_toBottomOf="@+id/nutritionName" />
 
     <TextView
-        android:id="@+id/nutrientCarbohydrates"
+        android:id="@+id/nutritionCarbohydrates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Nutrient Carbohydrates"
+        android:text="nutrition Carbohydrates"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nutrientCalories" />
+        app:layout_constraintTop_toBottomOf="@+id/nutritionCalories" />
 
     <TextView
-        android:id="@+id/nutrientProtein"
+        android:id="@+id/nutritionProtein"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Nutrient Protein"
+        android:text="nutrition Protein"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nutrientCarbohydrates" />
+        app:layout_constraintTop_toBottomOf="@+id/nutritionCarbohydrates" />
 
     <TextView
-        android:id="@+id/nutrientFat"
+        android:id="@+id/nutritionFat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Nutrient Fat"
+        android:text="nutrition Fat"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nutrientProtein" />
+        app:layout_constraintTop_toBottomOf="@+id/nutritionProtein" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
