@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.burak.nutritionalvaluebook.model.Nutrition
 import com.burak.nutritionalvaluebook.roomdb.NutritionDatabase
 import com.burak.nutritionalvaluebook.service.NutritionAPIService
-import com.burak.nutritionalvaluebook.util.SpeicalSharedPreferences
+import com.burak.nutritionalvaluebook.util.SpecialSharedPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,15 +22,15 @@ class NutritionListViewModel(application: Application) : AndroidViewModel(applic
 
 
     private val nutritionApiService = NutritionAPIService()
-    private val specialSharedPreferences = SpeicalSharedPreferences(getApplication())
+    private val specialSharedPreferences = SpecialSharedPreferences(getApplication())
 
     private val updateTime = 10 * 60 * 1000 * 1000 * 1000L
 
     fun refreshData() {
-        val saviTime = specialSharedPreferences.timeCapture()
+        val saveTime = specialSharedPreferences.timeCapture()
 
-        if(saviTime != null && saviTime != 0L && System.nanoTime() - saviTime < updateTime) {
-
+        if(saveTime != null && saveTime != 0L && System.nanoTime() - saveTime < updateTime) {
+            dataCollectRoom()
         } else  {
             dataCollectInternet()
         }
@@ -81,7 +81,7 @@ class NutritionListViewModel(application: Application) : AndroidViewModel(applic
             var i = 0
             while (i < nutritionList.size) {
                 nutritionList[i].uuid = uuidList[i].toInt()
-                i = i + 1
+                i += 1
             }
 
             showNutrition(nutritionList)

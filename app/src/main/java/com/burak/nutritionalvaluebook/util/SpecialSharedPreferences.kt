@@ -3,7 +3,7 @@ package com.burak.nutritionalvaluebook.util
 import android.content.Context
 import android.content.SharedPreferences
 
-class SpeicalSharedPreferences {
+class SpecialSharedPreferences {
 
     companion object {
 
@@ -11,7 +11,7 @@ class SpeicalSharedPreferences {
         private var sharedPreferences : SharedPreferences? = null
 
         @Volatile
-        private var instance: SpeicalSharedPreferences? = null
+        private var instance : SpecialSharedPreferences? = null
 
         private val lock = Any()
 
@@ -21,13 +21,10 @@ class SpeicalSharedPreferences {
             }
         }
 
-        private fun specialSharedPreferencesCreate(context: Context): SpeicalSharedPreferences {
+        private fun specialSharedPreferencesCreate(context: Context): SpecialSharedPreferences {
             sharedPreferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
-            return SpeicalSharedPreferences()
+            return SpecialSharedPreferences()
         }
-
-
-
     }
 
     fun timeSave(time : Long) {

@@ -16,7 +16,7 @@ class NutritionListFragment : Fragment() {
     private var _binding: FragmentNutritionListBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel : NutritionListViewModel
-    private  val nutritionRecycler = NutritionRecyclerAdapter(arrayListOf())
+    private  val nutritionRecyclerAdapter = NutritionRecyclerAdapter(arrayListOf())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,8 @@ class NutritionListFragment : Fragment() {
         viewModel = ViewModelProvider(this)[NutritionListViewModel::class.java]
         viewModel.refreshData()
 
-        binding.nutritionRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.nutritionRecyclerView.adapter = nutritionRecycler
+        binding.nutritionRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.nutritionRecyclerView.adapter = nutritionRecyclerAdapter
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             binding.nutritionRecyclerView.visibility = View.GONE
@@ -48,17 +48,18 @@ class NutritionListFragment : Fragment() {
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
+        observeLiveData()
 
     }
 
-    private fun observeLiveData() {
+    fun observeLiveData() {
         viewModel.nutritions.observe(viewLifecycleOwner) {
-            //adapter
             binding.nutritionRecyclerView.visibility = View.VISIBLE
+            nutritionRecyclerAdapter.nutritionUpdateList(it)
         }
 
         viewModel.nutritionErrorMessage.observe(viewLifecycleOwner) {
-            if(it) {
+            if (it) {
                 binding.nutritionErrorMessage.visibility = View.VISIBLE
                 binding.nutritionRecyclerView.visibility = View.GONE
             } else {
@@ -67,7 +68,7 @@ class NutritionListFragment : Fragment() {
         }
 
         viewModel.nutritionLoading.observe(viewLifecycleOwner) {
-            if(it) {
+            if (it) {
                 binding.nutritionErrorMessage.visibility = View.GONE
                 binding.nutritionRecyclerView.visibility = View.GONE
                 binding.nutritionLoading.visibility = View.VISIBLE
