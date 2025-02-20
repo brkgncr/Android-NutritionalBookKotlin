@@ -1,6 +1,6 @@
-# Nutritional Value Book
+# Nutritional Book
 
-**Nutritional Value Book** is an Android app designed to provide users with detailed nutritional information about various foods. The app includes features like exploring food nutritional details, viewing a breakdown of key nutrients, and fetching up-to-date data.
+**Nutritional Book** is an Android app designed to provide users with detailed nutritional information about various foods. The app includes features like exploring food nutritional details, viewing a breakdown of key nutrients, and fetching up-to-date data.
 
 ## Features
 
@@ -25,20 +25,6 @@
 - **Android Studio** (version 2021.1.1 or higher recommended)
 - **Android SDK 24+**
 - **Internet Access** for data fetching
-
-## Setup Instructions
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/yourusername/nutritional-value-book.git
-    ```
-
-2. Open the project in Android Studio.
-
-3. Sync the Gradle files by clicking "Sync Now".
-
-4. Build and run the project either on an emulator or a physical Android device.
 
 ## App Usage
 
