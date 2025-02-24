@@ -1,4 +1,4 @@
-# Nutritional Book
+# Nutritional Book - Android Application
 
 **Nutritional Book** is an Android app designed to provide users with detailed nutritional information about various foods. The app includes features like exploring food nutritional details, viewing a breakdown of key nutrients, and fetching up-to-date data.
 
